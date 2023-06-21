@@ -1,3 +1,4 @@
+<link rel="stylesheet" href="bootstrap.css">
 <?php 
 $nik = $_GET['id'];
 
@@ -16,20 +17,20 @@ print_r($data);
 ?>
 <hr>
 <form action="ubah_aksi.php?id=<?= $nik ?>" name="form" method="POST">
-     <div>
+     <div class="form-group">
           Nama Lengkap : 
-          <input name="nama" type="text" value="<?= $data['nama'] ?>" placeholder="Isi Nama" />
+          <input class="form-control" name="nama" type="text" value="<?= $data['nama'] ?>" placeholder="Isi Nama" />
      </div>
-     <div>
+     <div class="form-group">
           Tempat Lahir : 
-          <input name="tempat" type="text" value="<?= $data['tempat_lahir'] ?>" placeholder="Isi Kota" />
+          <input class="form-control" name="tempat" type="text" value="<?= $data['tempat_lahir'] ?>" placeholder="Isi Kota" />
      </div>
-     <div>
+     <div class="form-group">
           Tanggal Lahir : 
-          <input name="tanggal" type="date" value="<?= $data['tgl_lahir'] ?>" placeholder="Isi Tanggal" />
+          <input class="form-control" name="tanggal" type="date" value="<?= $data['tgl_lahir'] ?>" placeholder="Isi Tanggal" />
      </div>
-     <div>
-          <input type="submit" value="Simpan" />
+     <div class="form-group">
+          <input class="btn btn-success" type="submit" value="Simpan" />
      </div>
 </form>
 

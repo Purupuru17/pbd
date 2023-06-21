@@ -20,6 +20,8 @@ echo '<br>Ambil Data <hr>';
 $sql = "SELECT * FROM tb_penduduk";
 $query = mysqli_query($koneksi, $sql);
 ?>
+
+<a class="btn btn-primary" href="tambah.php" >Tambah Data</a>
 <table class="table table-striped table-bordered table-hover">
     <tr>
         <th class="text-center">No</th>
@@ -38,7 +40,10 @@ $query = mysqli_query($koneksi, $sql);
 	echo '<td class="text-center">'.$data['nik'].'</td>';
 	echo '<td class="text-center">'.$data['jenis_kelamin'].'</td>';
 	echo '<td class="text-center">'.$data['tempat_lahir'].', '.$data['tgl_lahir'].'</td>';
-	echo '<td class="text-center"><a class="btn btn-warning btn-xs" href="ubah.php?id='.$data['nik'].'"> Ubah </a></td>';
+	echo '<td class="text-center">
+		<a class="btn btn-warning btn-xs" href="ubah.php?id='.$data['nik'].'"> Ubah </a>
+		<a onclick="return confirm(`Anda yakin hapus ?`)" class="btn btn-danger btn-xs" href="hapus.php?id='.$data['nik'].'"> Hapus </a>
+	     </td>';
 	echo '</tr>';
 	$no++;
      }
