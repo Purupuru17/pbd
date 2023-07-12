@@ -1,19 +1,11 @@
 <link rel="stylesheet" href="bootstrap.css">
 <?php 
 $nik = $_GET['id'];
-
-$server = "app-db";
-$user = "root";
-$password = "root";
-$database = "family_db";
-
-$koneksi = mysqli_connect($server,$user,$password,$database);
+include 'config.php';
+$db = new Config();
 
 $sql = "SELECT * FROM tb_penduduk WHERE nik = {$nik}";
-$query = mysqli_query($koneksi, $sql);
-$data = mysqli_fetch_assoc($query);
-
-print_r($data);
+$data = $db->ambilSatu($sql);
 ?>
 <hr>
 <form action="ubah_aksi.php?id=<?= $nik ?>" name="form" method="POST">

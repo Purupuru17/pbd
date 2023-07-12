@@ -4,15 +4,12 @@ $nama = $_POST['nama'];
 $tempat = $_POST['tempat'];
 $tgl = $_POST['tanggal'];
 
-$server = "app-db";
-$user = "root";
-$password = "root";
-$database = "family_db";
-
-$koneksi = mysqli_connect($server,$user,$password,$database);
+include 'config.php';
+$db = new Config();
 
 $sql = "INSERT INTO tb_penduduk (nik,nama,tempat_lahir,tgl_lahir) VALUES ('$nik','$nama','$tempat','$tgl')";
-$query = mysqli_query($koneksi, $sql);
+
+$query = $db->aksiQuery($sql);
 if($query){
    header('Location: index.php');
 }else{

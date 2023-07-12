@@ -1,27 +1,7 @@
 <link rel="stylesheet" href="bootstrap.css">
 <h1 class="text-primary">Selamat Datang di UNIMUDA Sorong</h1>
 
-<?php
-$server = "app-db"; //localhost
-$user = "root";			//user xampp
-$password = "root";		//pass xampp
-$database = "family_db";	//nama db kalian
-
-$koneksi = mysqli_connect($server,$user,$password,$database);
-
-if($koneksi){
-    echo 'Koneksi Berhasil';
-}else{
-    echo 'Koneksi Gagal';
-}
-
-echo '<br>Ambil Data <hr>';
-
-$sql = "SELECT * FROM tb_penduduk";
-$query = mysqli_query($koneksi, $sql);
-?>
-
-<a class="btn btn-primary" href="tambah.php" >Tambah Data</a>
+<a class="btn btn-primary" href="tambah.php">Tambah Data</a>
 <table class="table table-striped table-bordered table-hover">
     <tr>
         <th class="text-center">No</th>
@@ -32,8 +12,11 @@ $query = mysqli_query($koneksi, $sql);
         <th class="text-center">Aksi</th>
     </tr>
     <?php
+     include 'config.php';
+     $db = new Config();
+     $hasil = $db->ambilSemua("SELECT * FROM tb_penduduk");
      $no = 1;
-     while($data = mysqli_fetch_array($query)){
+     foreach($hasil as $data){
 	echo '<tr>';
 	echo '<td class="text-center">'.$no.'</td>';
 	echo '<td class="text-center">'.$data['nama'].'</td>';
@@ -51,7 +34,7 @@ $query = mysqli_query($koneksi, $sql);
     <tr>
     	<th class="text-center" colspan="2">Total Data</th>
     	<th class="text-center"colspan="4">
-	     <span class="label label-primary"><?= mysqli_num_rows($query) ?></span>
+	     <span class="label label-primary"><?= count($hasil) ?></span>
     	</th>
     </tr>
 </table>
